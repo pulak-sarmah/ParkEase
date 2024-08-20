@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  db:
+    container_name: parkease_db
+    image: postgres:13
+    restart: always
+    ports:
+      - '2010:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgresDb
+    volumes:
+      - db_data_parkease:/var/lib/postgresql/data
+volumes:
+  db_data_parkease:
