@@ -3,3 +3,8 @@ build
 .next
 .env
 .next
+.yarn
+
+
+.nx/cache
+.nx/workspace-data
