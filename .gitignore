@@ -4,7 +4,9 @@ build
 .env
 .next
 .yarn
-
+dist
+.dist
+./dist
 
 .nx/cache
 .nx/workspace-data

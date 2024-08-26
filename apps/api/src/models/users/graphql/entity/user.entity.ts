@@ -3,7 +3,7 @@ import { $Enums, User as UserType } from '@prisma/client';
 import { RestrictProperties } from 'src/common/dtos/common.input';
 
 @ObjectType()
-export class User implements RestrictProperties<User, UserType> {
+class User implements RestrictProperties<User, UserType> {
   @Field({ nullable: true })
   image: string;
   uid: string;
@@ -22,3 +22,5 @@ export class AuthProvider {
   @Field(() => $Enums.AuthProviderType)
   type: $Enums.AuthProviderType;
 }
+
+export { User };

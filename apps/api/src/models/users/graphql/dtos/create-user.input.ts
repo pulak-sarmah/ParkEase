@@ -28,7 +28,9 @@ export class RegisterWithCredentialsInput extends PickType(
   ['name', 'image'],
   InputType,
 ) {
+  @Field()
   email: string;
+  @Field()
   password: string;
 }
 
@@ -40,6 +42,8 @@ export class LoginInput extends PickType(RegisterWithCredentialsInput, [
 
 @ObjectType()
 export class LoginOutput {
+  @Field()
   token: string;
+  @Field()
   user: User;
 }
