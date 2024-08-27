@@ -1960,6 +1960,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@hookform/resolvers@npm:^3.9.0":
+  version: 3.9.0
+  resolution: "@hookform/resolvers@npm:3.9.0"
+  peerDependencies:
+    react-hook-form: ^7.0.0
+  checksum: 64a1e77ea2eeeba521ec624f2cea33ec2d20c60de12847b59520393780a9c8b92b3d76b7b3eeabadef85e8c776826f7bc9016fa90a890580c4ed75503c060dd1
+  languageName: node
+  linkType: hard
+
 "@humanwhocodes/config-array@npm:^0.11.14":
   version: 0.11.14
   resolution: "@humanwhocodes/config-array@npm:0.11.14"
@@ -3119,6 +3128,18 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@parkease/forms@*, @parkease/forms@workspace:libs/forms":
+  version: 0.0.0-use.local
+  resolution: "@parkease/forms@workspace:libs/forms"
+  dependencies:
+    "@hookform/resolvers": ^3.9.0
+    react-hook-form: ^7.53.0
+    zod: ^3.23.8
+  peerDependencies:
+    react: "*"
+  languageName: unknown
+  linkType: soft
+
 "@parkease/network@*, @parkease/network@workspace:libs/network":
   version: 0.0.0-use.local
   resolution: "@parkease/network@workspace:libs/network"
@@ -3145,6 +3166,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@parkease/ui@workspace:libs/ui"
   dependencies:
+    "@parkease/forms": "*"
+    "@tabler/icons-react": ^3.13.0
     "@types/node": ^20
     "@types/react": ^18
     "@types/react-dom": ^18
@@ -3412,6 +3435,24 @@ __metadata:
     "@swc/counter": ^0.1.3
     tslib: ^2.4.0
   checksum: d4f207b191e54b29460804ddf2984ba6ece1d679a0b2f6a9c765dcf27bba92c5769e7965668a4546fb9f1021eaf0ff9be4bf5c235ce12adcd65acdfe77187d11
+  languageName: node
+  linkType: hard
+
+"@tabler/icons-react@npm:^3.13.0":
+  version: 3.13.0
+  resolution: "@tabler/icons-react@npm:3.13.0"
+  dependencies:
+    "@tabler/icons": 3.13.0
+  peerDependencies:
+    react: ">= 16"
+  checksum: c8406e68cf47b97a42d667141a2601ea0a3928f0931a24253b26b008d475c74bb4a334245fe3f2ce189d6e16091a4dc5000857291ce25f22006b3f367ac2bd1d
+  languageName: node
+  linkType: hard
+
+"@tabler/icons@npm:3.13.0":
+  version: 3.13.0
+  resolution: "@tabler/icons@npm:3.13.0"
+  checksum: b992a886939d582457fdec8f22e5594ed1ab5ccb57a1bfc4f191caea7b281b0d33630fa61e79435795fcdf7b51d8e357fcb3339520141b074db6455f5db537b0
   languageName: node
   linkType: hard
 
@@ -11053,6 +11094,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-hook-form@npm:^7.53.0":
+  version: 7.53.0
+  resolution: "react-hook-form@npm:7.53.0"
+  peerDependencies:
+    react: ^16.8.0 || ^17 || ^18 || ^19
+  checksum: 84d67fb79bad03d0aa809b5e411d97fb081fc13cd2b6d063a988f81f6fbef8545463e05360afa9d8d58fff19f08fa919930dcdc98a9e68bf74048c9f63e10ad5
+  languageName: node
+  linkType: hard
+
 "react-is@npm:^16.13.1, react-is@npm:^16.7.0":
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
@@ -13395,5 +13445,12 @@ __metadata:
   version: 0.8.15
   resolution: "zen-observable@npm:0.8.15"
   checksum: b7289084bc1fc74a559b7259faa23d3214b14b538a8843d2b001a35e27147833f4107590b1b44bf5bc7f6dfe6f488660d3a3725f268e09b3925b3476153b7821
+  languageName: node
+  linkType: hard
+
+"zod@npm:^3.23.8":
+  version: 3.23.8
+  resolution: "zod@npm:3.23.8"
+  checksum: 15949ff82118f59c893dacd9d3c766d02b6fa2e71cf474d5aa888570c469dbf5446ac5ad562bb035bf7ac9650da94f290655c194f4a6de3e766f43febd432c5c
   languageName: node
   linkType: hard
