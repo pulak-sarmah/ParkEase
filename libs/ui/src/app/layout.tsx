@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import '@parkease/ui/src/app/globals.css';
-import { ApolloProvider } from '@parkease/network/src/config/apollo';
+import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
