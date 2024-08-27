@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --color-text: #111827;
+}
+
+body {
+  color: var(--color-text);
+}

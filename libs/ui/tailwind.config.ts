@@ -19,6 +19,9 @@ const config: Config = {
       outlineColor: {
         DEFAULT: colorsConfig.primary.DEFAULT,
       },
+      textColor: {
+        DEFAULT: '#111827',
+      },
       borderRadius: {
         DEFAULT: '0',
       },
