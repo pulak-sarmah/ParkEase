@@ -1,4 +1,8 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { FindManyUserArgs, FindUniqueUserArgs } from './dtos/find.args';
 import { PrismaService } from 'src/common/prisma/prisma.service';
 import {
@@ -18,21 +22,22 @@ export class UsersService {
     private readonly prisma: PrismaService,
     private readonly jwtService: JwtService,
   ) {}
-
-  RegisterWithProvider({ image, name, uid, type }: RegisterWithProviderInput) {
+  registerWithProvider({ image, name, uid, type }: RegisterWithProviderInput) {
     return this.prisma.user.create({
       data: {
         uid,
         name,
         image,
         AuthProvider: {
-          create: { type },
+          create: {
+            type,
+          },
         },
       },
     });
   }
 
-  async RegisterWithCredentials({
+  async registerWithCredentials({
     email,
     name,
     password,
@@ -41,16 +46,18 @@ export class UsersService {
     const existingUser = await this.prisma.credentials.findUnique({
       where: { email },
     });
+
     if (existingUser) {
-      throw new BadRequestException('User already exists');
+      throw new BadRequestException('User already exists with this email.');
     }
 
-    const salt = bcrypt.genSaltSync(10);
+    // Hash the password
+    const salt = bcrypt.genSaltSync();
     const passwordHash = bcrypt.hashSync(password, salt);
 
     const uid = uuid();
 
-    return await this.prisma.user.create({
+    return this.prisma.user.create({
       data: {
         uid,
         name,
@@ -76,9 +83,7 @@ export class UsersService {
   async login({ email, password }: LoginInput): Promise<LoginOutput> {
     const user = await this.prisma.user.findFirst({
       where: {
-        Credentials: {
-          email,
-        },
+        Credentials: { email },
       },
       include: {
         Credentials: true,
@@ -86,7 +91,7 @@ export class UsersService {
     });
 
     if (!user) {
-      throw new BadRequestException('Invalid credentials');
+      throw new UnauthorizedException('Invalid email or password.');
     }
 
     const isPasswordValid = bcrypt.compareSync(
@@ -95,7 +100,7 @@ export class UsersService {
     );
 
     if (!isPasswordValid) {
-      throw new BadRequestException('Invalid credentials');
+      throw new UnauthorizedException('Invalid email or password.');
     }
 
     const jwtToken = this.jwtService.sign(

@@ -3,8 +3,8 @@ import {
   Query,
   Mutation,
   Args,
-  Parent,
   ResolveField,
+  Parent,
 } from '@nestjs/graphql';
 import { UsersService } from './users.service';
 import { AuthProvider, User } from './entity/user.entity';
@@ -37,15 +37,14 @@ export class UsersResolver {
     @Args('registerWithCredentialsInput')
     args: RegisterWithCredentialsInput,
   ) {
-    return await this.usersService.RegisterWithCredentials(args);
+    return this.usersService.registerWithCredentials(args);
   }
 
   @Mutation(() => User)
   async registerWithProvider(
-    @Args('registerWithProviderInput')
-    args: RegisterWithProviderInput,
+    @Args('registerWithProviderInput') args: RegisterWithProviderInput,
   ) {
-    return await this.usersService.RegisterWithProvider(args);
+    return this.usersService.registerWithProvider(args);
   }
 
   @Mutation(() => LoginOutput)

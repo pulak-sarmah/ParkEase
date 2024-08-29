@@ -51,6 +51,7 @@ export class CompaniesResolver {
     });
   }
 
+  @AllowAuthenticated()
   @Query(() => Company, { name: 'company' })
   findOne(@Args() args: FindUniqueCompanyArgs) {
     return this.companiesService.findOne(args);

@@ -3167,6 +3167,8 @@ __metadata:
   resolution: "@parkease/ui@workspace:libs/ui"
   dependencies:
     "@parkease/forms": "*"
+    "@parkease/network": "*"
+    "@parkease/utils": "*"
     "@tabler/icons-react": ^3.13.0
     "@types/node": ^20
     "@types/react": ^18
@@ -3179,6 +3181,16 @@ __metadata:
     react-dom: ^18
     tailwindcss: ^3.4.1
     typescript: ^5
+  languageName: unknown
+  linkType: soft
+
+"@parkease/utils@*, @parkease/utils@workspace:libs/util":
+  version: 0.0.0-use.local
+  resolution: "@parkease/utils@workspace:libs/util"
+  dependencies:
+    "@types/pluralize": ^0.0.33
+    date-fns: ^3.6.0
+    pluralize: ^8.0.0
   languageName: unknown
   linkType: soft
 
@@ -3754,6 +3766,13 @@ __metadata:
   dependencies:
     undici-types: ~6.19.2
   checksum: 2b8f30f416f5c1851ffa8a13ef6c464a5e355edfd763713c22813a7839f6419a64e27925f9e89c972513d78432263179332f0bffb273d16498233bfdf495d096
+  languageName: node
+  linkType: hard
+
+"@types/pluralize@npm:^0.0.33":
+  version: 0.0.33
+  resolution: "@types/pluralize@npm:0.0.33"
+  checksum: 282d42dc0187e5e0912f9f36ee0f5615bfd273a08d40afe5bf5881cb28daf1977abe10564543032aa0f42352ebba739ff3d86bf5562ac4691c6d1761fcc7cf39
   languageName: node
   linkType: hard
 
@@ -5857,6 +5876,13 @@ __metadata:
   version: 2.2.2
   resolution: "dataloader@npm:2.2.2"
   checksum: 4dabd247089c29f194e94d5434d504f99156c5c214a03463c20f3f17f40398d7e179edee69a27c16e315519ac8739042a810090087ae26449a0e685156a02c65
+  languageName: node
+  linkType: hard
+
+"date-fns@npm:^3.6.0":
+  version: 3.6.0
+  resolution: "date-fns@npm:3.6.0"
+  checksum: 0daa1e9a436cf99f9f2ae9232b55e11f3dd46132bee10987164f3eebd29f245b2e066d7d7db40782627411ecf18551d8f4c9fcdf2226e48bb66545407d448ab7
   languageName: node
   linkType: hard
 
@@ -10743,7 +10769,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pluralize@npm:8.0.0":
+"pluralize@npm:8.0.0, pluralize@npm:^8.0.0":
   version: 8.0.0
   resolution: "pluralize@npm:8.0.0"
   checksum: 08931d4a6a4a5561a7f94f67a31c17e6632cb21e459ab3ff4f6f629d9a822984cf8afef2311d2005fbea5d7ef26016ebb090db008e2d8bce39d0a9a9d218736e

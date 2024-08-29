@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import '@parkease/ui/src/app/globals.css';
-import { ApolloProvider } from '@parkease/network/src/config/apollo';
-
+import ApolloClientProvider from '@parkease/ui/src/components/molecules/ApolloClientProvider';
+import SessionProvider from '@parkease/ui/src/components/molecules/SessionProvider';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -17,7 +17,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <SessionProvider>
+        <ApolloClientProvider>
+          <body className={inter.className}>{children}</body>
+        </ApolloClientProvider>
+      </SessionProvider>
     </html>
   );
 }

@@ -29,7 +29,6 @@ export class RegisterWithCredentialsInput extends PickType(
   InputType,
 ) {
   email: string;
-
   password: string;
 }
 
