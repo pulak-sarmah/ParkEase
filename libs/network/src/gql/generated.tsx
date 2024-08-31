@@ -1,20 +1,33 @@
 import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
-export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K];
+};
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]?: Maybe<T[SubKey]>;
+};
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]: Maybe<T[SubKey]>;
+};
+export type MakeEmpty<
+  T extends { [key: string]: unknown },
+  K extends keyof T,
+> = { [_ in K]?: never };
+export type Incremental<T> =
+  | T
+  | {
+      [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never;
+    };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: { input: string; output: string; }
-  String: { input: string; output: string; }
-  Boolean: { input: boolean; output: boolean; }
-  Int: { input: number; output: number; }
-  Float: { input: number; output: number; }
+  ID: { input: string; output: string };
+  String: { input: string; output: string };
+  Boolean: { input: boolean; output: boolean };
+  Int: { input: number; output: number };
+  Float: { input: number; output: number };
   /** A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format. */
-  DateTime: { input: any; output: any; }
+  DateTime: { input: any; output: any };
 };
 
 export type Address = {
@@ -52,7 +65,7 @@ export enum AddressScalarFieldEnum {
   Id = 'id',
   Lat = 'lat',
   Lng = 'lng',
-  UpdatedAt = 'updatedAt'
+  UpdatedAt = 'updatedAt',
 }
 
 export type AddressWhereInput = {
@@ -99,7 +112,7 @@ export type AdminRelationFilter = {
 export enum AdminScalarFieldEnum {
   CreatedAt = 'createdAt',
   Uid = 'uid',
-  UpdatedAt = 'updatedAt'
+  UpdatedAt = 'updatedAt',
 }
 
 export type AdminWhereInput = {
@@ -130,7 +143,7 @@ export type AuthProvider = {
 
 export enum AuthProviderType {
   Credentials = 'CREDENTIALS',
-  Google = 'GOOGLE'
+  Google = 'GOOGLE',
 }
 
 export type Booking = {
@@ -202,7 +215,7 @@ export enum BookingScalarFieldEnum {
   Status = 'status',
   TotalPrice = 'totalPrice',
   UpdatedAt = 'updatedAt',
-  VehicleNumber = 'vehicleNumber'
+  VehicleNumber = 'vehicleNumber',
 }
 
 export enum BookingStatus {
@@ -212,7 +225,7 @@ export enum BookingStatus {
   ValetAssignedForCheckIn = 'VALET_ASSIGNED_FOR_CHECK_IN',
   ValetAssignedForCheckOut = 'VALET_ASSIGNED_FOR_CHECK_OUT',
   ValetPickedUp = 'VALET_PICKED_UP',
-  ValetReturned = 'VALET_RETURNED'
+  ValetReturned = 'VALET_RETURNED',
 }
 
 export type BookingTimeline = {
@@ -253,7 +266,7 @@ export enum BookingTimelineScalarFieldEnum {
   ManagerId = 'managerId',
   Status = 'status',
   Timestamp = 'timestamp',
-  ValetId = 'valetId'
+  ValetId = 'valetId',
 }
 
 export type BookingTimelineWhereInput = {
@@ -339,7 +352,7 @@ export enum CompanyScalarFieldEnum {
   Description = 'description',
   DisplayName = 'displayName',
   Id = 'id',
-  UpdatedAt = 'updatedAt'
+  UpdatedAt = 'updatedAt',
 }
 
 export type CompanyWhereInput = {
@@ -506,7 +519,7 @@ export enum CustomerScalarFieldEnum {
   CreatedAt = 'createdAt',
   DisplayName = 'displayName',
   Uid = 'uid',
-  UpdatedAt = 'updatedAt'
+  UpdatedAt = 'updatedAt',
 }
 
 export type CustomerWhereInput = {
@@ -581,7 +594,6 @@ export type Garage = {
   verification?: Maybe<Verification>;
 };
 
-
 export type GarageAvailableSlotsArgs = {
   dateFilter: DateFilterInput;
   slotsFilter?: InputMaybe<SlotWhereInput>;
@@ -631,7 +643,7 @@ export enum GarageScalarFieldEnum {
   DisplayName = 'displayName',
   Id = 'id',
   Images = 'images',
-  UpdatedAt = 'updatedAt'
+  UpdatedAt = 'updatedAt',
 }
 
 export type GarageWhereInput = {
@@ -723,7 +735,7 @@ export enum ManagerScalarFieldEnum {
   CreatedAt = 'createdAt',
   DisplayName = 'displayName',
   Uid = 'uid',
-  UpdatedAt = 'updatedAt'
+  UpdatedAt = 'updatedAt',
 }
 
 export type ManagerWhereInput = {
@@ -801,233 +813,187 @@ export type Mutation = {
   updateVerification: Verification;
 };
 
-
 export type MutationAssignValetArgs = {
   bookingId: Scalars['Int']['input'];
   status: Scalars['String']['input'];
 };
 
-
 export type MutationCreateAddressArgs = {
   createAddressInput: CreateAddressInput;
 };
-
 
 export type MutationCreateAdminArgs = {
   createAdminInput: CreateAdminInput;
 };
 
-
 export type MutationCreateBookingArgs = {
   createBookingInput: CreateBookingInput;
 };
-
 
 export type MutationCreateBookingTimelineArgs = {
   createBookingTimelineInput: CreateBookingTimelineInput;
 };
 
-
 export type MutationCreateCompanyArgs = {
   createCompanyInput: CreateCompanyInput;
 };
-
 
 export type MutationCreateCustomerArgs = {
   createCustomerInput: CreateCustomerInput;
 };
 
-
 export type MutationCreateGarageArgs = {
   createGarageInput: CreateGarageInput;
 };
 
-
 export type MutationCreateManagerArgs = {
   createManagerInput: CreateManagerInput;
 };
-
 
 export type MutationCreateManySlotsArgs = {
   count: Scalars['Int']['input'];
   createSlotInput: CreateSlotInput;
 };
 
-
 export type MutationCreateReviewArgs = {
   createReviewInput: CreateReviewInput;
 };
-
 
 export type MutationCreateSlotArgs = {
   createSlotInput: CreateSlotInput;
 };
 
-
 export type MutationCreateValetArgs = {
   createValetInput: CreateValetInput;
 };
-
 
 export type MutationCreateValetAssignmentArgs = {
   createValetAssignmentInput: CreateValetAssignmentInput;
 };
 
-
 export type MutationCreateVerificationArgs = {
   createVerificationInput: CreateVerificationInput;
 };
-
 
 export type MutationLoginArgs = {
   loginInput: LoginInput;
 };
 
-
 export type MutationRegisterWithCredentialsArgs = {
   registerWithCredentialsInput: RegisterWithCredentialsInput;
 };
-
 
 export type MutationRegisterWithProviderArgs = {
   registerWithProviderInput: RegisterWithProviderInput;
 };
 
-
 export type MutationRemoveAddressArgs = {
   where: AddressWhereUniqueInput;
 };
-
 
 export type MutationRemoveAdminArgs = {
   where: AdminWhereUniqueInput;
 };
 
-
 export type MutationRemoveBookingArgs = {
   where: BookingWhereUniqueInput;
 };
-
 
 export type MutationRemoveBookingTimelineArgs = {
   where: BookingTimelineWhereUniqueInput;
 };
 
-
 export type MutationRemoveCompanyArgs = {
   where: CompanyWhereUniqueInput;
 };
-
 
 export type MutationRemoveCustomerArgs = {
   where: CustomerWhereUniqueInput;
 };
 
-
 export type MutationRemoveGarageArgs = {
   where: GarageWhereUniqueInput;
 };
-
 
 export type MutationRemoveManagerArgs = {
   where: ManagerWhereUniqueInput;
 };
 
-
 export type MutationRemoveReviewArgs = {
   where: ReviewWhereUniqueInput;
 };
-
 
 export type MutationRemoveSlotArgs = {
   where: SlotWhereUniqueInput;
 };
 
-
 export type MutationRemoveUserArgs = {
   where: UserWhereUniqueInput;
 };
-
 
 export type MutationRemoveValetArgs = {
   where: ValetWhereUniqueInput;
 };
 
-
 export type MutationRemoveValetAssignmentArgs = {
   where: ValetAssignmentWhereUniqueInput;
 };
-
 
 export type MutationRemoveVerificationArgs = {
   where: VerificationWhereUniqueInput;
 };
 
-
 export type MutationUpdateAddressArgs = {
   updateAddressInput: UpdateAddressInput;
 };
-
 
 export type MutationUpdateAdminArgs = {
   updateAdminInput: UpdateAdminInput;
 };
 
-
 export type MutationUpdateBookingArgs = {
   updateBookingInput: UpdateBookingInput;
 };
-
 
 export type MutationUpdateBookingTimelineArgs = {
   updateBookingTimelineInput: UpdateBookingTimelineInput;
 };
 
-
 export type MutationUpdateCompanyArgs = {
   updateCompanyInput: UpdateCompanyInput;
 };
-
 
 export type MutationUpdateCustomerArgs = {
   updateCustomerInput: UpdateCustomerInput;
 };
 
-
 export type MutationUpdateGarageArgs = {
   updateGarageInput: UpdateGarageInput;
 };
-
 
 export type MutationUpdateManagerArgs = {
   updateManagerInput: UpdateManagerInput;
 };
 
-
 export type MutationUpdateReviewArgs = {
   updateReviewInput: UpdateReviewInput;
 };
-
 
 export type MutationUpdateSlotArgs = {
   updateSlotInput: UpdateSlotInput;
 };
 
-
 export type MutationUpdateUserArgs = {
   updateUserInput: UpdateUserInput;
 };
-
 
 export type MutationUpdateValetArgs = {
   updateValetInput: UpdateValetInput;
 };
 
-
 export type MutationUpdateValetAssignmentArgs = {
   updateValetAssignmentInput: UpdateValetAssignmentInput;
 };
-
 
 export type MutationUpdateVerificationArgs = {
   updateVerificationInput: UpdateVerificationInput;
@@ -1083,11 +1049,9 @@ export type Query = {
   whoami: User;
 };
 
-
 export type QueryAddressArgs = {
   where: AddressWhereUniqueInput;
 };
-
 
 export type QueryAddressesArgs = {
   cursor?: InputMaybe<AddressWhereUniqueInput>;
@@ -1098,11 +1062,9 @@ export type QueryAddressesArgs = {
   where?: InputMaybe<AddressWhereInput>;
 };
 
-
 export type QueryAdminArgs = {
   where: AdminWhereUniqueInput;
 };
-
 
 export type QueryAdminsArgs = {
   cursor?: InputMaybe<AdminWhereUniqueInput>;
@@ -1113,21 +1075,17 @@ export type QueryAdminsArgs = {
   where?: InputMaybe<AdminWhereInput>;
 };
 
-
 export type QueryAdminsCountArgs = {
   where?: InputMaybe<AdminWhereInput>;
 };
-
 
 export type QueryBookingArgs = {
   where: BookingWhereUniqueInput;
 };
 
-
 export type QueryBookingTimelineArgs = {
   where: BookingTimelineWhereUniqueInput;
 };
-
 
 export type QueryBookingTimelinesArgs = {
   cursor?: InputMaybe<BookingTimelineWhereUniqueInput>;
@@ -1138,7 +1096,6 @@ export type QueryBookingTimelinesArgs = {
   where?: InputMaybe<BookingTimelineWhereInput>;
 };
 
-
 export type QueryBookingsArgs = {
   cursor?: InputMaybe<BookingWhereUniqueInput>;
   distinct?: InputMaybe<Array<BookingScalarFieldEnum>>;
@@ -1148,11 +1105,9 @@ export type QueryBookingsArgs = {
   where?: InputMaybe<BookingWhereInput>;
 };
 
-
 export type QueryBookingsCountArgs = {
   where?: InputMaybe<BookingWhereInput>;
 };
-
 
 export type QueryBookingsForCustomerArgs = {
   cursor?: InputMaybe<BookingWhereUniqueInput>;
@@ -1163,7 +1118,6 @@ export type QueryBookingsForCustomerArgs = {
   where?: InputMaybe<BookingWhereInput>;
 };
 
-
 export type QueryBookingsForGarageArgs = {
   cursor?: InputMaybe<BookingWhereUniqueInput>;
   distinct?: InputMaybe<Array<BookingScalarFieldEnum>>;
@@ -1172,7 +1126,6 @@ export type QueryBookingsForGarageArgs = {
   take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<BookingWhereInput>;
 };
-
 
 export type QueryBookingsForValetArgs = {
   cursor?: InputMaybe<BookingWhereUniqueInput>;
@@ -1183,7 +1136,6 @@ export type QueryBookingsForValetArgs = {
   where?: InputMaybe<BookingWhereInput>;
 };
 
-
 export type QueryCompaniesArgs = {
   cursor?: InputMaybe<CompanyWhereUniqueInput>;
   distinct?: InputMaybe<Array<CompanyScalarFieldEnum>>;
@@ -1193,11 +1145,9 @@ export type QueryCompaniesArgs = {
   where?: InputMaybe<CompanyWhereInput>;
 };
 
-
 export type QueryCompanyArgs = {
   where: CompanyWhereUniqueInput;
 };
-
 
 export type QueryCompanyValetsArgs = {
   cursor?: InputMaybe<ValetWhereUniqueInput>;
@@ -1208,16 +1158,13 @@ export type QueryCompanyValetsArgs = {
   where?: InputMaybe<ValetWhereInput>;
 };
 
-
 export type QueryCompanyValetsTotalArgs = {
   where?: InputMaybe<ValetWhereInput>;
 };
 
-
 export type QueryCustomerArgs = {
   where: CustomerWhereUniqueInput;
 };
-
 
 export type QueryCustomersArgs = {
   cursor?: InputMaybe<CustomerWhereUniqueInput>;
@@ -1228,11 +1175,9 @@ export type QueryCustomersArgs = {
   where?: InputMaybe<CustomerWhereInput>;
 };
 
-
 export type QueryGarageArgs = {
   where: GarageWhereUniqueInput;
 };
-
 
 export type QueryGaragesArgs = {
   cursor?: InputMaybe<GarageWhereUniqueInput>;
@@ -1243,21 +1188,17 @@ export type QueryGaragesArgs = {
   where?: InputMaybe<GarageWhereInput>;
 };
 
-
 export type QueryGaragesCountArgs = {
   where?: InputMaybe<GarageWhereInput>;
 };
-
 
 export type QueryGetAuthProviderArgs = {
   uid: Scalars['String']['input'];
 };
 
-
 export type QueryManagerArgs = {
   where: ManagerWhereUniqueInput;
 };
-
 
 export type QueryManagersArgs = {
   cursor?: InputMaybe<ManagerWhereUniqueInput>;
@@ -1268,11 +1209,9 @@ export type QueryManagersArgs = {
   where?: InputMaybe<ManagerWhereInput>;
 };
 
-
 export type QueryReviewArgs = {
   where: ReviewWhereUniqueInput;
 };
-
 
 export type QueryReviewsArgs = {
   cursor?: InputMaybe<ReviewWhereUniqueInput>;
@@ -1283,7 +1222,6 @@ export type QueryReviewsArgs = {
   where?: InputMaybe<ReviewWhereInput>;
 };
 
-
 export type QuerySearchGaragesArgs = {
   dateFilter: DateFilterInput;
   garageFilter?: InputMaybe<GarageFilter>;
@@ -1291,11 +1229,9 @@ export type QuerySearchGaragesArgs = {
   slotsFilter?: InputMaybe<SlotWhereInput>;
 };
 
-
 export type QuerySlotArgs = {
   where: SlotWhereUniqueInput;
 };
-
 
 export type QuerySlotsArgs = {
   cursor?: InputMaybe<SlotWhereUniqueInput>;
@@ -1306,11 +1242,9 @@ export type QuerySlotsArgs = {
   where?: InputMaybe<SlotWhereInput>;
 };
 
-
 export type QueryUserArgs = {
   where: UserWhereUniqueInput;
 };
-
 
 export type QueryUsersArgs = {
   cursor?: InputMaybe<UserWhereUniqueInput>;
@@ -1321,16 +1255,13 @@ export type QueryUsersArgs = {
   where?: InputMaybe<UserWhereInput>;
 };
 
-
 export type QueryValetArgs = {
   where: ValetWhereUniqueInput;
 };
 
-
 export type QueryValetAssignmentArgs = {
   where: ValetAssignmentWhereUniqueInput;
 };
-
 
 export type QueryValetAssignmentsArgs = {
   cursor?: InputMaybe<ValetAssignmentWhereUniqueInput>;
@@ -1341,18 +1272,15 @@ export type QueryValetAssignmentsArgs = {
   where?: InputMaybe<ValetAssignmentWhereInput>;
 };
 
-
 export type QueryValetDropsArgs = {
   skip?: InputMaybe<Scalars['Int']['input']>;
   take?: InputMaybe<Scalars['Int']['input']>;
 };
 
-
 export type QueryValetPickupsArgs = {
   skip?: InputMaybe<Scalars['Int']['input']>;
   take?: InputMaybe<Scalars['Int']['input']>;
 };
-
 
 export type QueryValetsArgs = {
   cursor?: InputMaybe<ValetWhereUniqueInput>;
@@ -1363,11 +1291,9 @@ export type QueryValetsArgs = {
   where?: InputMaybe<ValetWhereInput>;
 };
 
-
 export type QueryVerificationArgs = {
   where: VerificationWhereUniqueInput;
 };
-
 
 export type QueryVerificationsArgs = {
   cursor?: InputMaybe<VerificationWhereUniqueInput>;
@@ -1380,7 +1306,7 @@ export type QueryVerificationsArgs = {
 
 export enum QueryMode {
   Default = 'default',
-  Insensitive = 'insensitive'
+  Insensitive = 'insensitive',
 }
 
 export type RegisterWithCredentialsInput = {
@@ -1442,7 +1368,7 @@ export enum ReviewScalarFieldEnum {
   GarageId = 'garageId',
   Id = 'id',
   Rating = 'rating',
-  UpdatedAt = 'updatedAt'
+  UpdatedAt = 'updatedAt',
 }
 
 export type ReviewWhereInput = {
@@ -1520,14 +1446,14 @@ export enum SlotScalarFieldEnum {
   PricePerHour = 'pricePerHour',
   Type = 'type',
   UpdatedAt = 'updatedAt',
-  Width = 'width'
+  Width = 'width',
 }
 
 export enum SlotType {
   Bicycle = 'BICYCLE',
   Bike = 'BIKE',
   Car = 'CAR',
-  Heavy = 'HEAVY'
+  Heavy = 'HEAVY',
 }
 
 export type SlotTypeCount = {
@@ -1560,7 +1486,7 @@ export type SlotWhereUniqueInput = {
 
 export enum SortOrder {
   Asc = 'asc',
-  Desc = 'desc'
+  Desc = 'desc',
 }
 
 export type StringFilter = {
@@ -1724,7 +1650,7 @@ export enum UserScalarFieldEnum {
   Image = 'image',
   Name = 'name',
   Uid = 'uid',
-  UpdatedAt = 'updatedAt'
+  UpdatedAt = 'updatedAt',
 }
 
 export type UserWhereInput = {
@@ -1809,7 +1735,7 @@ export enum ValetAssignmentScalarFieldEnum {
   ReturnLat = 'returnLat',
   ReturnLng = 'returnLng',
   ReturnValetId = 'returnValetId',
-  UpdatedAt = 'updatedAt'
+  UpdatedAt = 'updatedAt',
 }
 
 export type ValetAssignmentWhereInput = {
@@ -1871,7 +1797,7 @@ export enum ValetScalarFieldEnum {
   Image = 'image',
   LicenceId = 'licenceID',
   Uid = 'uid',
-  UpdatedAt = 'updatedAt'
+  UpdatedAt = 'updatedAt',
 }
 
 export type ValetWhereInput = {
@@ -1935,7 +1861,7 @@ export enum VerificationScalarFieldEnum {
   CreatedAt = 'createdAt',
   GarageId = 'garageId',
   UpdatedAt = 'updatedAt',
-  Verified = 'verified'
+  Verified = 'verified',
 }
 
 export type VerificationWhereInput = {
@@ -1959,56 +1885,489 @@ export type RegisterWithCredentialsMutationVariables = Exact<{
   registerWithCredentialsInput: RegisterWithCredentialsInput;
 }>;
 
-
-export type RegisterWithCredentialsMutation = { __typename?: 'Mutation', registerWithCredentials: { __typename?: 'User', updatedAt: any, uid: string, name?: string | null, image?: string | null, createdAt: any } };
+export type RegisterWithCredentialsMutation = {
+  __typename?: 'Mutation';
+  registerWithCredentials: {
+    __typename?: 'User';
+    updatedAt: any;
+    uid: string;
+    name?: string | null;
+    image?: string | null;
+    createdAt: any;
+  };
+};
 
 export type CompaniesQueryVariables = Exact<{
   distinct?: InputMaybe<Array<CompanyScalarFieldEnum> | CompanyScalarFieldEnum>;
-  orderBy?: InputMaybe<Array<CompanyOrderByWithRelationInput> | CompanyOrderByWithRelationInput>;
+  orderBy?: InputMaybe<
+    Array<CompanyOrderByWithRelationInput> | CompanyOrderByWithRelationInput
+  >;
   where?: InputMaybe<CompanyWhereInput>;
   cursor?: InputMaybe<CompanyWhereUniqueInput>;
   skip?: InputMaybe<Scalars['Int']['input']>;
   take?: InputMaybe<Scalars['Int']['input']>;
 }>;
 
-
-export type CompaniesQuery = { __typename?: 'Query', companies: Array<{ __typename?: 'Company', createdAt: any, description?: string | null, displayName?: string | null, id: number, updatedAt: any, garages: Array<{ __typename?: 'Garage', id: number }>, managers: Array<{ __typename?: 'Manager', uid: string }> }> };
+export type CompaniesQuery = {
+  __typename?: 'Query';
+  companies: Array<{
+    __typename?: 'Company';
+    createdAt: any;
+    description?: string | null;
+    displayName?: string | null;
+    id: number;
+    updatedAt: any;
+    garages: Array<{ __typename?: 'Garage'; id: number }>;
+    managers: Array<{ __typename?: 'Manager'; uid: string }>;
+  }>;
+};
 
 export type LoginMutationVariables = Exact<{
   loginInput: LoginInput;
 }>;
 
-
-export type LoginMutation = { __typename?: 'Mutation', login: { __typename?: 'LoginOutput', token: string, user: { __typename?: 'User', uid: string, name?: string | null, image?: string | null } } };
+export type LoginMutation = {
+  __typename?: 'Mutation';
+  login: {
+    __typename?: 'LoginOutput';
+    token: string;
+    user: {
+      __typename?: 'User';
+      uid: string;
+      name?: string | null;
+      image?: string | null;
+    };
+  };
+};
 
 export type GetAuthProviderQueryVariables = Exact<{
   uid: Scalars['String']['input'];
 }>;
 
-
-export type GetAuthProviderQuery = { __typename?: 'Query', getAuthProvider?: { __typename?: 'AuthProvider', uid: string, type: AuthProviderType } | null };
+export type GetAuthProviderQuery = {
+  __typename?: 'Query';
+  getAuthProvider?: {
+    __typename?: 'AuthProvider';
+    uid: string;
+    type: AuthProviderType;
+  } | null;
+};
 
 export type RegisterWithProviderMutationVariables = Exact<{
   registerWithProviderInput: RegisterWithProviderInput;
 }>;
 
-
-export type RegisterWithProviderMutation = { __typename?: 'Mutation', registerWithProvider: { __typename?: 'User', uid: string } };
+export type RegisterWithProviderMutation = {
+  __typename?: 'Mutation';
+  registerWithProvider: { __typename?: 'User'; uid: string };
+};
 
 export const namedOperations = {
   Query: {
     Companies: 'Companies',
-    GetAuthProvider: 'GetAuthProvider'
+    GetAuthProvider: 'GetAuthProvider',
   },
   Mutation: {
     RegisterWithCredentials: 'RegisterWithCredentials',
     Login: 'Login',
-    RegisterWithProvider: 'RegisterWithProvider'
-  }
-}
+    RegisterWithProvider: 'RegisterWithProvider',
+  },
+};
 
-export const RegisterWithCredentialsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"RegisterWithCredentials"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"registerWithCredentialsInput"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"RegisterWithCredentialsInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"registerWithCredentials"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"registerWithCredentialsInput"},"value":{"kind":"Variable","name":{"kind":"Name","value":"registerWithCredentialsInput"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}},{"kind":"Field","name":{"kind":"Name","value":"uid"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"image"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}}]}}]}}]} as unknown as DocumentNode<RegisterWithCredentialsMutation, RegisterWithCredentialsMutationVariables>;
-export const CompaniesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Companies"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"distinct"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"CompanyScalarFieldEnum"}}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"orderBy"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"CompanyOrderByWithRelationInput"}}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"where"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"CompanyWhereInput"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"cursor"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"CompanyWhereUniqueInput"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"skip"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"take"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"companies"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"distinct"},"value":{"kind":"Variable","name":{"kind":"Name","value":"distinct"}}},{"kind":"Argument","name":{"kind":"Name","value":"orderBy"},"value":{"kind":"Variable","name":{"kind":"Name","value":"orderBy"}}},{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"Variable","name":{"kind":"Name","value":"where"}}},{"kind":"Argument","name":{"kind":"Name","value":"cursor"},"value":{"kind":"Variable","name":{"kind":"Name","value":"cursor"}}},{"kind":"Argument","name":{"kind":"Name","value":"skip"},"value":{"kind":"Variable","name":{"kind":"Name","value":"skip"}}},{"kind":"Argument","name":{"kind":"Name","value":"take"},"value":{"kind":"Variable","name":{"kind":"Name","value":"take"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"garages"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"managers"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"uid"}}]}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}}]}}]} as unknown as DocumentNode<CompaniesQuery, CompaniesQueryVariables>;
-export const LoginDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Login"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"loginInput"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"LoginInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"login"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"loginInput"},"value":{"kind":"Variable","name":{"kind":"Name","value":"loginInput"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"token"}},{"kind":"Field","name":{"kind":"Name","value":"user"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"uid"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"image"}}]}}]}}]}}]} as unknown as DocumentNode<LoginMutation, LoginMutationVariables>;
-export const GetAuthProviderDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetAuthProvider"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"uid"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getAuthProvider"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"uid"},"value":{"kind":"Variable","name":{"kind":"Name","value":"uid"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"uid"}},{"kind":"Field","name":{"kind":"Name","value":"type"}}]}}]}}]} as unknown as DocumentNode<GetAuthProviderQuery, GetAuthProviderQueryVariables>;
-export const RegisterWithProviderDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"RegisterWithProvider"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"registerWithProviderInput"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"RegisterWithProviderInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"registerWithProvider"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"registerWithProviderInput"},"value":{"kind":"Variable","name":{"kind":"Name","value":"registerWithProviderInput"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"uid"}}]}}]}}]} as unknown as DocumentNode<RegisterWithProviderMutation, RegisterWithProviderMutationVariables>;
+export const RegisterWithCredentialsDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'mutation',
+      name: { kind: 'Name', value: 'RegisterWithCredentials' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: {
+            kind: 'Variable',
+            name: { kind: 'Name', value: 'registerWithCredentialsInput' },
+          },
+          type: {
+            kind: 'NonNullType',
+            type: {
+              kind: 'NamedType',
+              name: { kind: 'Name', value: 'RegisterWithCredentialsInput' },
+            },
+          },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'registerWithCredentials' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'registerWithCredentialsInput' },
+                value: {
+                  kind: 'Variable',
+                  name: { kind: 'Name', value: 'registerWithCredentialsInput' },
+                },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'updatedAt' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'uid' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'image' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'createdAt' } },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<
+  RegisterWithCredentialsMutation,
+  RegisterWithCredentialsMutationVariables
+>;
+export const CompaniesDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'Companies' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: {
+            kind: 'Variable',
+            name: { kind: 'Name', value: 'distinct' },
+          },
+          type: {
+            kind: 'ListType',
+            type: {
+              kind: 'NonNullType',
+              type: {
+                kind: 'NamedType',
+                name: { kind: 'Name', value: 'CompanyScalarFieldEnum' },
+              },
+            },
+          },
+        },
+        {
+          kind: 'VariableDefinition',
+          variable: {
+            kind: 'Variable',
+            name: { kind: 'Name', value: 'orderBy' },
+          },
+          type: {
+            kind: 'ListType',
+            type: {
+              kind: 'NonNullType',
+              type: {
+                kind: 'NamedType',
+                name: {
+                  kind: 'Name',
+                  value: 'CompanyOrderByWithRelationInput',
+                },
+              },
+            },
+          },
+        },
+        {
+          kind: 'VariableDefinition',
+          variable: {
+            kind: 'Variable',
+            name: { kind: 'Name', value: 'where' },
+          },
+          type: {
+            kind: 'NamedType',
+            name: { kind: 'Name', value: 'CompanyWhereInput' },
+          },
+        },
+        {
+          kind: 'VariableDefinition',
+          variable: {
+            kind: 'Variable',
+            name: { kind: 'Name', value: 'cursor' },
+          },
+          type: {
+            kind: 'NamedType',
+            name: { kind: 'Name', value: 'CompanyWhereUniqueInput' },
+          },
+        },
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'skip' } },
+          type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } },
+        },
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'take' } },
+          type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'companies' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'distinct' },
+                value: {
+                  kind: 'Variable',
+                  name: { kind: 'Name', value: 'distinct' },
+                },
+              },
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'orderBy' },
+                value: {
+                  kind: 'Variable',
+                  name: { kind: 'Name', value: 'orderBy' },
+                },
+              },
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'where' },
+                value: {
+                  kind: 'Variable',
+                  name: { kind: 'Name', value: 'where' },
+                },
+              },
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'cursor' },
+                value: {
+                  kind: 'Variable',
+                  name: { kind: 'Name', value: 'cursor' },
+                },
+              },
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'skip' },
+                value: {
+                  kind: 'Variable',
+                  name: { kind: 'Name', value: 'skip' },
+                },
+              },
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'take' },
+                value: {
+                  kind: 'Variable',
+                  name: { kind: 'Name', value: 'take' },
+                },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'createdAt' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'description' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'displayName' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'garages' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                    ],
+                  },
+                },
+                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'managers' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'uid' } },
+                    ],
+                  },
+                },
+                { kind: 'Field', name: { kind: 'Name', value: 'updatedAt' } },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<CompaniesQuery, CompaniesQueryVariables>;
+export const LoginDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'mutation',
+      name: { kind: 'Name', value: 'Login' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: {
+            kind: 'Variable',
+            name: { kind: 'Name', value: 'loginInput' },
+          },
+          type: {
+            kind: 'NonNullType',
+            type: {
+              kind: 'NamedType',
+              name: { kind: 'Name', value: 'LoginInput' },
+            },
+          },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'login' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'loginInput' },
+                value: {
+                  kind: 'Variable',
+                  name: { kind: 'Name', value: 'loginInput' },
+                },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'token' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'user' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'uid' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'image' } },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<LoginMutation, LoginMutationVariables>;
+export const GetAuthProviderDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'GetAuthProvider' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'uid' } },
+          type: {
+            kind: 'NonNullType',
+            type: {
+              kind: 'NamedType',
+              name: { kind: 'Name', value: 'String' },
+            },
+          },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'getAuthProvider' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'uid' },
+                value: {
+                  kind: 'Variable',
+                  name: { kind: 'Name', value: 'uid' },
+                },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'uid' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'type' } },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<
+  GetAuthProviderQuery,
+  GetAuthProviderQueryVariables
+>;
+export const RegisterWithProviderDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'mutation',
+      name: { kind: 'Name', value: 'RegisterWithProvider' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: {
+            kind: 'Variable',
+            name: { kind: 'Name', value: 'registerWithProviderInput' },
+          },
+          type: {
+            kind: 'NonNullType',
+            type: {
+              kind: 'NamedType',
+              name: { kind: 'Name', value: 'RegisterWithProviderInput' },
+            },
+          },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'registerWithProvider' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'registerWithProviderInput' },
+                value: {
+                  kind: 'Variable',
+                  name: { kind: 'Name', value: 'registerWithProviderInput' },
+                },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'uid' } },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<
+  RegisterWithProviderMutation,
+  RegisterWithProviderMutationVariables
+>;

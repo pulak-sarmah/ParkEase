@@ -4,6 +4,7 @@ import '@parkease/ui/src/app/globals.css';
 import ApolloClientProvider from '@parkease/ui/src/components/molecules/ApolloClientProvider';
 import SessionProvider from '@parkease/ui/src/components/molecules/SessionProvider';
 const inter = Inter({ subsets: ['latin'] });
+import Header from '@parkease/ui/src/components/organisms/Header';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -19,7 +20,10 @@ export default function RootLayout({
     <html lang="en">
       <SessionProvider>
         <ApolloClientProvider>
-          <body className={inter.className}>{children}</body>
+          <body className={inter.className}>
+            <Header menuItems={[]} />
+            {children}
+          </body>
         </ApolloClientProvider>
       </SessionProvider>
     </html>
